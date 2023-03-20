@@ -2,8 +2,8 @@ import requests
 import json
 import laceworktoken
 
+#request to get ALL ALERTS to searching
 account = "secureauth.lacework.net"
-
 token_body = {
   "paging": {
     "rows": 1000,
@@ -11,23 +11,21 @@ token_body = {
     "urls": {
       "nextPage": "https://YourLacework.lacework.net/api/v2/Alerts/AbcdEfgh123..."
     }
-  },
-  "data": [
-    {
-      "startTime": "2023-03-13",
-      "severity": "Info",
-      "endTime": "2023-03-20"
-    }
-  ]
+  }
 }
-
 jsontoken_body = json.dumps(token_body)
-#print(jsontoken_body)
 
+#send request
 r = requests.get("https://secureauth.lacework.net/api/v2/Alerts", headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, json=jsontoken_body)
 
+#print status code (200/4XX/5XX)
 print(r)
 
+#overwrite existing alertsfile
+with open("alerts.txt", "w") as output_file:
+    output_file.close()
+
+#print output to console and alerts file
 for i in range(len(r.json()['data'])):
   response = r.json()['data'][i]
   print(response)
