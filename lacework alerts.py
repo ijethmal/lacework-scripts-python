@@ -14,8 +14,8 @@ token_body = {
   },
   "data": [
     {
-      "startTime": "2023-03-18",
-      "severity": "High",
+      "startTime": "2023-03-13",
+      "severity": "Info",
       "endTime": "2023-03-20"
     }
   ]
@@ -28,6 +28,14 @@ r = requests.get("https://secureauth.lacework.net/api/v2/Alerts", headers={"Auth
 
 print(r)
 
-response = r.json()['data'][0]
+for i in range(len(r.json()['data'])):
+  response = r.json()['data'][i]
+  print(response)
+  with open("alerts.txt", "a") as output_file:
+    print(response, file=output_file)
+    output_file.close()
+  
 
-print(response)
+#print(response)
+
+
