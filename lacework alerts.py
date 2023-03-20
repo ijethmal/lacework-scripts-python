@@ -22,7 +22,7 @@ token_body = {
 }
 
 jsontoken_body = json.dumps(token_body)
-print(jsontoken_body)
+#print(jsontoken_body)
 
 r = requests.get("https://secureauth.lacework.net/api/v2/Alerts", headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, json=jsontoken_body)
 
