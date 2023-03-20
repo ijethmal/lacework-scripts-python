@@ -2,7 +2,7 @@ import requests
 import json
 import laceworktoken
 
-#request to get ALL ALERTS to searching
+#request to get ALL ALERTS no searching
 account = "secureauth.lacework.net"
 token_body = {
   "paging": {
