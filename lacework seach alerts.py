@@ -43,6 +43,3 @@ for i in range(len(r.json()['data'])):
     output_file.close()
   
 
-#print(response)
-
-
