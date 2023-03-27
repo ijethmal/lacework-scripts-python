@@ -6,3 +6,4 @@ container vulns.txt
 reports.txt
 host vulns.txt
 search host vulns.py
+search host vulns safe.py
