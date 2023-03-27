@@ -23,6 +23,15 @@ r = requests.get("https://secureauth.lacework.net/api/v2/AuditLogs", headers={"A
 
 print(r)
 
-response = r.json()['data'][0]
+#overwrite existing alertsfile
+with open("auditlogs.txt", "w") as output_file:
+    output_file.close()
+
+for i in range(len(r.json()['data'])):
+  response = r.json()['data'][i]
+  print(response)
+  with open("auditlogs.txt", "a") as output_file:
+    print(response, file=output_file)
+    output_file.close()
 
 print(response)
