@@ -17,7 +17,7 @@ token_body = {
     }
   ],
   "returns": [ 
-    "mid", "severity", "status", "vulnId", "evalCtx", "fixInfo", "featureKey", "machineTags" 
+    "severity", "status", "vulnId" 
     ]
 }
 jsontoken_body = json.dumps(token_body)
