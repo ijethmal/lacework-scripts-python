@@ -6,9 +6,13 @@ import laceworktoken
 account = "secureauth.lacework.net"
 token_body = {
   "timeFilter": {
-    "startTime": "2023-03-25T08:00:00.000Z",
+    "startTime": "2023-03-20T08:00:00.000Z",
     "endTime": "2023-03-26T08:00:00.000Z"
-  }
+  },
+  "filters": [ 
+    { "field": "vulnId", "expression": "eq", "value": "CVE-2023-23915" 
+    } 
+  ]
 }
 jsontoken_body = json.dumps(token_body)
 print(jsontoken_body)
