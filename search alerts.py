@@ -6,8 +6,8 @@ import laceworktoken
 account = "secureauth.lacework.net"
 token_body = {
   "timeFilter": {
-    "startTime": "2023-03-13T08:00:00.000Z",
-    "endTime": "2023-03-20T08:00:00.000Z"
+    "startTime": "2023-03-25T08:00:00.000Z",
+    "endTime": "2023-03-26T08:00:00.000Z"
   },
   "filters": [
     {
@@ -42,7 +42,4 @@ for i in range(len(r.json()['data'])):
     print(response, file=output_file)
     output_file.close()
   
-
-#print(response)
-
 
