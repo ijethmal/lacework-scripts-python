@@ -2,3 +2,5 @@ __pycache__/laceworktoken.cpython-38.pyc
 laceworktoken.py
 alerts.txt
 auditlogs.txt
+container vulns.txt
+reports.txt
