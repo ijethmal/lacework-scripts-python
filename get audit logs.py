@@ -1,8 +1,13 @@
 import requests
 import json
 import laceworktoken
+import os 
+import dotenv
+from dotenv import load_dotenv
 
-account = "secureauth.lacework.net"
+load_dotenv()
+account = os.getenv('account')
+account = account
 
 token_body = {
     "timeFilter": 
@@ -18,8 +23,8 @@ token_body = {
 
 jsontoken_body = json.dumps(token_body)
 #print(jsontoken_body)
-
-r = requests.get("https://secureauth.lacework.net/api/v2/AuditLogs", headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, json=jsontoken_body)
+logsurl = os.getenv('auditlogsurl')
+r = requests.get(logsurl, headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, json=jsontoken_body)
 
 print(r)
 

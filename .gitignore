@@ -1,4 +1,5 @@
 __pycache__/laceworktoken.cpython-38.pyc
+.env
 laceworktoken.py
 alerts.txt
 auditlogs.txt

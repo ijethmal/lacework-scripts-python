@@ -1,17 +1,22 @@
 import requests
 import json
 import laceworktoken
+import os 
+import dotenv
+from dotenv import load_dotenv
 
 #request to SEARCH FOR SPECIFIC ALERTS
-account = "secureauth.lacework.net"
+load_dotenv()
+account = os.getenv('account')
+account = account
 token_body = {
   "timeFilter": {
     "startTime": "2023-03-20T08:00:00.000Z",
     "endTime": "2023-03-26T08:00:00.000Z"
   },
-  "filters": [ #will only return medium severity alerts from pen test server ip-10-255-255-6.ec2.internal
-    { "field": "machineTags.AmiId", "expression": "eq", "value": "ami-09a41e26df464c548" 
-    },
+  "filters": [ #will only return medium severity alerts from specified machine
+  #  { "field": "machineTags.AmiId", "expression": "eq", "value": "ami here" 
+  #  },
     {
       "field": "severity", "expression": "eq", "value": "Medium"
     }
@@ -24,8 +29,8 @@ jsontoken_body = json.dumps(token_body)
 print(jsontoken_body)
 
 #send request
-#note!! for post requests, it's data not json
-r = requests.post("https://secureauth.lacework.net/api/v2/Vulnerabilities/Hosts/search", headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, data=jsontoken_body)
+hostvulnsurl = os.getenv('hostvulnsurl')
+r = requests.post(hostvulnsurl, headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, data=jsontoken_body)
 
 #print status code (200/4XX/5XX)
 print(r)

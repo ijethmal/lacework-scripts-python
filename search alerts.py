@@ -1,9 +1,14 @@
 import requests
 import json
 import laceworktoken
+import os 
+import dotenv
+from dotenv import load_dotenv
 
 #request to SEARCH FOR SPECIFIC ALERTS
-account = "secureauth.lacework.net"
+load_dotenv()
+account = os.getenv('account')
+account = account
 token_body = {
   "timeFilter": {
     "startTime": "2023-03-25T08:00:00.000Z",
@@ -25,7 +30,8 @@ print(jsontoken_body)
 
 #send request
 #note!! for post requests, it's data not json
-r = requests.post("https://secureauth.lacework.net/api/v2/Alerts/search", headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, data=jsontoken_body)
+alertsurl = os.getenv('alertsurl')
+r = requests.post(alertsurl, headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, data=jsontoken_body)
 
 #print status code (200/4XX/5XX)
 print(r)

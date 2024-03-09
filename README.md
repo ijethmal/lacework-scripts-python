@@ -1,2 +1,2 @@
 # lacework-scripts
-this repo is for scripts for lacework API requests
+Automation scripts for getting information about your machines from Lacework using Lacework API, with filtering and formatting of findings into a readable .txt file.

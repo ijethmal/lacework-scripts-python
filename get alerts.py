@@ -1,9 +1,14 @@
 import requests
 import json
 import laceworktoken
+import os 
+import dotenv
+from dotenv import load_dotenv
 
 #request to get ALL ALERTS no searching
-account = "secureauth.lacework.net"
+load_dotenv()
+account = os.getenv('account')
+account = account
 token_body = {
   "paging": {
     "rows": 1000,
@@ -16,7 +21,8 @@ token_body = {
 jsontoken_body = json.dumps(token_body)
 
 #send request
-r = requests.get("https://secureauth.lacework.net/api/v2/Alerts", headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, json=jsontoken_body)
+alertsurl = os.getenv('alertsurl')
+r = requests.get(alertsurl, headers={"Authorization": "Bearer {}".format(laceworktoken.token), "Content-Type": "application/json"}, json=jsontoken_body)
 
 #print status code (200/4XX/5XX)
 print(r)
